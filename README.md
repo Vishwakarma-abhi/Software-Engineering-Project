@@ -1,4 +1,4 @@
-# bit_d
+# Computerization of BITD
 
 A new Flutter project.
 
