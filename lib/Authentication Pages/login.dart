@@ -83,7 +83,7 @@ class _loginpageState extends State<loginpage> {
                                 // controller: email,
                                 style: TextStyle(),
                                 decoration:
-                                    InputDecoration(hintText: 'Fullname'),
+                                    InputDecoration(hintText: 'Firstname'),
                                 validator: (value) {
                                   if ((value!.isEmpty)) {
                                     return 'Please Enter Your name';

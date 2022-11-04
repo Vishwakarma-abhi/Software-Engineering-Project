@@ -100,9 +100,11 @@ class _homeScreenState extends State<homeScreen> {
                         'Assets/home.png',
                         height: 100,
                       ),
-                      Text(
-                        ' WELCOME ' + username!.toUpperCase(),
-                        style: TextStyle(fontSize: 20, color: Colors.white),
+                      Center(
+                        child: Text(
+                          ' WELCOME ' + username!.toUpperCase(),
+                          style: TextStyle(fontSize: 20, color: Colors.white),
+                        ),
                       )
                     ],
                   )),

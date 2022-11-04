@@ -17,6 +17,8 @@ class _attendenceState extends State<attendence> {
     "Leave Days": 20
   };
 
+  final GlobalKey<ScaffoldState> _key = GlobalKey();
+
   List<Color> colorList = [
     const Color(0xFF5EDFC6),
     Color.fromARGB(255, 242, 106, 85),
@@ -26,24 +28,35 @@ class _attendenceState extends State<attendence> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      key: _key,
       appBar: AppBar(
         elevation: 0,
         toolbarHeight: 80,
         backgroundColor: Colors.transparent,
         title: Text(
           'STUDENT PORTAL',
-          style: TextStyle(color: Colors.black),
+          style: TextStyle(color: Colors.white),
         ),
         centerTitle: true,
         flexibleSpace: Container(
           decoration: BoxDecoration(
               border: Border.all(color: Colors.black),
               borderRadius: BorderRadius.circular(1),
-              color: Color(0xFFFAEDED)),
+              color: Color.fromARGB(255, 94, 140, 240)),
         ),
-        leading: Icon(
-          Icons.menu,
-          color: Colors.black,
+        leading: GestureDetector(
+          onTap: () {
+            _key.currentState!.openDrawer();
+          },
+          child: GestureDetector(
+            onTap: () {
+              _key.currentState!.openDrawer();
+            },
+            child: Icon(
+              Icons.menu,
+              color: Colors.white,
+            ),
+          ),
         ),
         systemOverlayStyle: SystemUiOverlayStyle.light,
         actions: [
@@ -55,7 +68,7 @@ class _attendenceState extends State<attendence> {
                 },
                 icon: Icon(
                   Icons.leave_bags_at_home,
-                  color: Colors.black,
+                  color: Colors.white,
                 )),
           )
         ],
