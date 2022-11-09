@@ -9,13 +9,18 @@ import 'package:bit_d/Modules/create_profile.dart';
 import 'package:bit_d/Modules/holiday.dart';
 import 'package:bit_d/Modules/syllabus.dart';
 import 'package:bit_d/Modules/viewprofile.dart';
-import 'package:bit_d/books.dart';
+import 'package:bit_d/Modules/books.dart';
+import 'package:bit_d/custom_widgets/custom_appbar.dart';
+import 'package:bit_d/custom_widgets/custom_drawer.dart';
+import 'package:bit_d/custom_widgets/home_boxdecor.dart';
 import 'package:bit_d/functions/erp.dart';
 import 'package:bit_d/pyqs.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:url_launcher/url_launcher.dart';
+
+import 'Modules/books.dart';
 
 class homeScreen extends StatefulWidget {
   const homeScreen({Key? key}) : super(key: key);
@@ -26,117 +31,15 @@ class homeScreen extends StatefulWidget {
 
 class _homeScreenState extends State<homeScreen> {
   //Creating a sGlobal key for accessing navigation bar
-  final GlobalKey<ScaffoldState> _key = GlobalKey();
+  // final GlobalKey<ScaffoldState> _key = GlobalKey();
 
-  final username = FirebaseAuth.instance.currentUser!.displayName;
+  final username = FirebaseAuth.instance.currentUser?.displayName;
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      key: _key,
-      appBar: AppBar(
-        elevation: 0,
-        toolbarHeight: 80,
-        backgroundColor: Colors.transparent,
-        title: Text(
-          'STUDENT PORTAL',
-          style: TextStyle(color: Colors.white),
-        ),
-        centerTitle: true,
-        flexibleSpace: Container(
-          decoration: BoxDecoration(
-              border: Border.all(color: Colors.black),
-              borderRadius: BorderRadius.circular(1),
-              color: Color.fromARGB(255, 94, 140, 240)),
-        ),
-        leading: GestureDetector(
-          onTap: () {
-            _key.currentState!.openDrawer();
-          },
-          child: GestureDetector(
-            onTap: () {
-              _key.currentState!.openDrawer();
-            },
-            child: Icon(
-              Icons.menu,
-              color: Colors.white,
-            ),
-          ),
-        ),
-        systemOverlayStyle: SystemUiOverlayStyle.light,
-        actions: [
-          Padding(
-            padding: const EdgeInsets.all(8.0),
-            child: IconButton(
-                onPressed: () async {
-                  await FirebaseAuth.instance.signOut();
-                },
-                icon: Icon(
-                  Icons.leave_bags_at_home,
-                  color: Colors.white,
-                )),
-          )
-        ],
-      ),
-
-      //drawer or navigation bar
-      drawer: Drawer(
-        child: Padding(
-          padding: const EdgeInsets.fromLTRB(0, 0, 0, 0),
-          child: ListView(
-            padding: EdgeInsets.zero,
-            children: [
-              DrawerHeader(
-                  decoration: BoxDecoration(
-                      color: Color.fromARGB(
-                    255,
-                    94,
-                    140,
-                    240,
-                  )),
-                  child: Column(
-                    children: [
-                      Image.asset(
-                        'Assets/home.png',
-                        height: 100,
-                      ),
-                      Center(
-                        child: Text(
-                          ' WELCOME ' + username!.toUpperCase(),
-                          style: TextStyle(fontSize: 20, color: Colors.white),
-                        ),
-                      )
-                    ],
-                  )),
-              ListTile(
-                leading: Icon(
-                  Icons.home,
-                ),
-                title: const Text('HOME'),
-                onTap: () {},
-              ),
-              ListTile(
-                leading: Icon(Icons.web),
-                title: const Text('ERP'),
-                onTap: () {},
-              ),
-              ListTile(
-                leading: Icon(Icons.web),
-                title: const Text('ABOUT US'),
-                onTap: () {},
-              ),
-              ListTile(
-                leading: Icon(Icons.logout),
-                title: const Text('LOGOUT'),
-                onTap: () async {
-                  await FirebaseAuth.instance.signOut();
-                },
-              ),
-            ],
-          ),
-        ),
-      ),
-
+      appBar: custombar,
+      drawer: customdrawer,
       body: Stack(
         children: [
           Column(
@@ -163,12 +66,7 @@ class _homeScreenState extends State<homeScreen> {
                     //Attendence
                     Center(
                       child: Container(
-                        decoration: BoxDecoration(
-                          border: Border.all(
-                              color: Color.fromARGB(255, 94, 140, 240),
-                              width: 3),
-                          borderRadius: BorderRadius.circular(1),
-                        ),
+                        decoration: boxdecor,
                         width: 120,
                         height: 120,
                         child: Column(
@@ -214,12 +112,7 @@ class _homeScreenState extends State<homeScreen> {
                                   builder: ((context) => addAssignments())));
                         },
                         child: Container(
-                          decoration: BoxDecoration(
-                            border: Border.all(
-                                color: Color.fromARGB(255, 94, 140, 240),
-                                width: 3),
-                            borderRadius: BorderRadius.circular(1),
-                          ),
+                          decoration: boxdecor,
                           width: 120,
                           height: 120,
                           child: Column(
@@ -266,12 +159,7 @@ class _homeScreenState extends State<homeScreen> {
                                   builder: (context) => facultydettails()));
                         },
                         child: Container(
-                          decoration: BoxDecoration(
-                            border: Border.all(
-                                color: Color.fromARGB(255, 94, 140, 240),
-                                width: 3),
-                            borderRadius: BorderRadius.circular(1),
-                          ),
+                          decoration: boxdecor,
                           width: 120,
                           height: 120,
                           child: Column(
@@ -306,12 +194,7 @@ class _homeScreenState extends State<homeScreen> {
                               MaterialPageRoute(builder: (context) => notes()));
                         }),
                         child: Container(
-                          decoration: BoxDecoration(
-                            border: Border.all(
-                                color: Color.fromARGB(255, 94, 140, 240),
-                                width: 3),
-                            borderRadius: BorderRadius.circular(1),
-                          ),
+                          decoration: boxdecor,
                           width: 120,
                           height: 120,
                           child: Column(
@@ -358,11 +241,7 @@ class _homeScreenState extends State<homeScreen> {
                                   builder: (context) => const cse_book()));
                         },
                         child: Container(
-                          decoration: BoxDecoration(
-                              borderRadius: BorderRadius.circular(1),
-                              border: Border.all(
-                                  color: Color.fromARGB(255, 94, 140, 240),
-                                  width: 3)),
+                          decoration: boxdecor,
                           width: 120,
                           height: 120,
                           child: Column(
@@ -398,11 +277,7 @@ class _homeScreenState extends State<homeScreen> {
                                   builder: (context) => const profile()));
                         },
                         child: Container(
-                          decoration: BoxDecoration(
-                              borderRadius: BorderRadius.circular(1),
-                              border: Border.all(
-                                  color: Color.fromARGB(255, 94, 140, 240),
-                                  width: 3)),
+                          decoration: boxdecor,
                           width: 120,
                           height: 120,
                           child: Column(
@@ -442,12 +317,7 @@ class _homeScreenState extends State<homeScreen> {
                     //Attendence
                     Center(
                       child: Container(
-                        decoration: BoxDecoration(
-                          border: Border.all(
-                              color: Color.fromARGB(255, 94, 140, 240),
-                              width: 3),
-                          borderRadius: BorderRadius.circular(1),
-                        ),
+                        decoration: boxdecor,
                         width: 120,
                         height: 120,
                         child: Column(
@@ -493,12 +363,7 @@ class _homeScreenState extends State<homeScreen> {
                                   builder: ((context) => resultdata())));
                         },
                         child: Container(
-                          decoration: BoxDecoration(
-                            border: Border.all(
-                                color: Color.fromARGB(255, 94, 140, 240),
-                                width: 3),
-                            borderRadius: BorderRadius.circular(1),
-                          ),
+                          decoration: boxdecor,
                           width: 120,
                           height: 120,
                           child: Column(
@@ -538,12 +403,7 @@ class _homeScreenState extends State<homeScreen> {
                     //Attendence
                     Center(
                       child: Container(
-                        decoration: BoxDecoration(
-                          border: Border.all(
-                              color: Color.fromARGB(255, 94, 140, 240),
-                              width: 3),
-                          borderRadius: BorderRadius.circular(1),
-                        ),
+                        decoration: boxdecor,
                         width: 120,
                         height: 120,
                         child: Column(
@@ -595,12 +455,7 @@ class _homeScreenState extends State<homeScreen> {
                                   builder: ((context) => Holiday())));
                         },
                         child: Container(
-                          decoration: BoxDecoration(
-                            border: Border.all(
-                                color: Color.fromARGB(255, 94, 140, 240),
-                                width: 3),
-                            borderRadius: BorderRadius.circular(1),
-                          ),
+                          decoration: boxdecor,
                           width: 120,
                           height: 120,
                           child: Column(

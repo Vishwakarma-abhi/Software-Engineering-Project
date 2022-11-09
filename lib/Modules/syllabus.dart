@@ -14,7 +14,7 @@ class _syllabusState extends State<syllabus> {
       length: 8,
       child: Scaffold(
         appBar: AppBar(
-          backgroundColor: Colors.amber,
+          backgroundColor: Color.fromARGB(255, 94, 140, 240),
           title: Text(
             'CSE',
             style: TextStyle(

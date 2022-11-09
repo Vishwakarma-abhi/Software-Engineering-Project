@@ -1,3 +1,5 @@
+import 'package:bit_d/custom_widgets/custom_appbar.dart';
+import 'package:bit_d/custom_widgets/custom_drawer.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -17,8 +19,6 @@ class _attendenceState extends State<attendence> {
     "Leave Days": 20
   };
 
-  final GlobalKey<ScaffoldState> _key = GlobalKey();
-
   List<Color> colorList = [
     const Color(0xFF5EDFC6),
     Color.fromARGB(255, 242, 106, 85),
@@ -28,74 +28,39 @@ class _attendenceState extends State<attendence> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      key: _key,
-      appBar: AppBar(
-        elevation: 0,
-        toolbarHeight: 80,
-        backgroundColor: Colors.transparent,
-        title: Text(
-          'STUDENT PORTAL',
-          style: TextStyle(color: Colors.white),
-        ),
-        centerTitle: true,
-        flexibleSpace: Container(
-          decoration: BoxDecoration(
-              border: Border.all(color: Colors.black),
-              borderRadius: BorderRadius.circular(1),
-              color: Color.fromARGB(255, 94, 140, 240)),
-        ),
-        leading: GestureDetector(
-          onTap: () {
-            _key.currentState!.openDrawer();
-          },
-          child: GestureDetector(
-            onTap: () {
-              _key.currentState!.openDrawer();
-            },
-            child: Icon(
-              Icons.menu,
-              color: Colors.white,
+      appBar: custombar,
+      drawer: customdrawer,
+      body: Padding(
+        padding: const EdgeInsets.fromLTRB(15, 10, 10, 0),
+        child: Column(
+          children: [
+            Padding(
+              padding: const EdgeInsets.fromLTRB(0, 80, 0, 0),
+              child: Text(
+                'ATTENDENCE',
+                style: TextStyle(fontSize: 23, fontWeight: FontWeight.bold),
+              ),
             ),
-          ),
+            SizedBox(
+              height: 45,
+            ),
+            Container(
+              height: 400,
+              width: 400,
+              decoration: BoxDecoration(
+                  border: Border.all(color: Colors.black),
+                  borderRadius: BorderRadius.circular(15)),
+              margin: EdgeInsets.all(15),
+              padding: EdgeInsets.symmetric(horizontal: 16),
+              child: PieChart(
+                dataMap: dataMap,
+                chartType: ChartType.disc,
+                baseChartColor: Colors.grey[300]!,
+                colorList: colorList,
+              ),
+            ),
+          ],
         ),
-        systemOverlayStyle: SystemUiOverlayStyle.light,
-        actions: [
-          Padding(
-            padding: const EdgeInsets.all(8.0),
-            child: IconButton(
-                onPressed: () async {
-                  await FirebaseAuth.instance.signOut();
-                },
-                icon: Icon(
-                  Icons.leave_bags_at_home,
-                  color: Colors.white,
-                )),
-          )
-        ],
-      ),
-      body: Column(
-        children: [
-          Padding(
-            padding: const EdgeInsets.fromLTRB(0, 80, 0, 0),
-            child: Text(
-              'ATTENDENCE',
-              style: TextStyle(fontSize: 23, fontWeight: FontWeight.bold),
-            ),
-          ),
-          SizedBox(
-            height: 45,
-          ),
-          Container(
-            margin: EdgeInsets.all(15),
-            padding: EdgeInsets.symmetric(horizontal: 16),
-            child: PieChart(
-              dataMap: dataMap,
-              chartType: ChartType.disc,
-              baseChartColor: Colors.grey[300]!,
-              colorList: colorList,
-            ),
-          ),
-        ],
       ),
     );
   }

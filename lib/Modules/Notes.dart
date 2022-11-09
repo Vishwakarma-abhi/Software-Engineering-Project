@@ -1,6 +1,10 @@
+import 'package:bit_d/custom_widgets/custom_appbar.dart';
+import 'package:bit_d/custom_widgets/custom_drawer.dart';
+import 'package:bit_d/custom_widgets/home_boxdecor.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:syncfusion_flutter_pdfviewer/pdfviewer.dart';
 
 class notes extends StatefulWidget {
   const notes({Key? key}) : super(key: key);
@@ -13,48 +17,28 @@ class _notesState extends State<notes> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        appBar: AppBar(
-          elevation: 0,
-          toolbarHeight: 80,
-          backgroundColor: Colors.transparent,
-          title: Text(
-            'STUDENT PORTAL',
-            style: TextStyle(color: Colors.black),
-          ),
-          centerTitle: true,
-          flexibleSpace: Container(
-            decoration: BoxDecoration(
-                border: Border.all(color: Colors.black),
-                borderRadius: BorderRadius.circular(1),
-                color: Color(0xFFFAEDED)),
-          ),
-          leading: Icon(
-            Icons.menu,
-            color: Colors.black,
-          ),
-          systemOverlayStyle: SystemUiOverlayStyle.light,
-          actions: [
-            Padding(
-              padding: const EdgeInsets.all(8.0),
-              child: IconButton(
-                  onPressed: () async {
-                    await FirebaseAuth.instance.signOut();
-                  },
-                  icon: Icon(
-                    Icons.leave_bags_at_home,
-                    color: Colors.black,
-                  )),
-            )
-          ],
-        ),
+        appBar: custombar,
+        drawer: customdrawer,
         body: Column(children: [
           Padding(
             padding: const EdgeInsets.all(8.0),
             child: SizedBox(
               height: 40,
-              child: Text(
-                'ACCESS NOTES',
-                style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+              child: Container(
+                height: 40,
+                width: 190,
+                decoration: BoxDecoration(
+                    color: Color.fromARGB(255, 94, 140, 240),
+                    borderRadius: BorderRadius.circular(25)),
+                child: Center(
+                  child: Text(
+                    'ACCESS NOTES',
+                    style: TextStyle(
+                        fontSize: 20,
+                        fontWeight: FontWeight.bold,
+                        color: Colors.white),
+                  ),
+                ),
               ),
             ),
           ),
@@ -64,35 +48,34 @@ class _notesState extends State<notes> {
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   GestureDetector(
+                    onTap: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(builder: (context) => const pdf()),
+                      );
+                    },
                     child: Container(
                       margin: EdgeInsets.fromLTRB(0.0, 50.0, 0.0, 10.0),
                       height: 160,
                       width: 150,
-                      decoration: BoxDecoration(
-                          color: Color.fromARGB(255, 254, 254, 254),
-                          borderRadius: BorderRadius.circular(25),
-                          border: Border.all(
-                            color: Colors.black,
-                          )
-                          //more than 50% of width makes circle
-                          ),
+                      decoration: notebox,
                       child: Center(
                         child: Column(
                           children: [
                             GestureDetector(
                               onTap: () {
-                                // Navigator.push(
-                                //   context,
-                                //   MaterialPageRoute(
-                                //       builder: (context) => const pdf()),
-                                // );
+                                Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                      builder: (context) => const pdf()),
+                                );
                               },
                               child: Container(
                                 margin:
                                     EdgeInsets.fromLTRB(0.0, 10.0, 0.0, 10.0),
                                 height: 90,
                                 width: 80,
-                                child: Image.asset('Assets/1.png'),
+                                child: Image.asset('Assets/unnamed.png'),
                               ),
                             ),
                             SizedBox(
@@ -100,11 +83,18 @@ class _notesState extends State<notes> {
                             ),
                             Container(
                               child: Center(
-                                child: Text(
-                                  'DCCN',
-                                  style: TextStyle(
-                                    fontFamily: 'Secular',
-                                    fontSize: 18,
+                                child: Container(
+                                  width: 100,
+                                  height: 30,
+                                  decoration: subboxdecor,
+                                  child: Center(
+                                    child: Text(
+                                      'DBMS',
+                                      style: TextStyle(
+                                          fontFamily: 'Secular',
+                                          fontSize: 18,
+                                          color: Colors.white),
+                                    ),
                                   ),
                                 ),
                               ),
@@ -119,23 +109,16 @@ class _notesState extends State<notes> {
                   ),
                   GestureDetector(
                     onTap: () {
-                      // Navigator.push(
-                      //   context,
-                      //   MaterialPageRoute(builder: (context) => const pdf()),
-                      // );
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(builder: (context) => const pdf()),
+                      );
                     },
                     child: Container(
                       margin: EdgeInsets.fromLTRB(0.0, 50.0, 0.0, 10.0),
                       height: 160,
                       width: 150,
-                      decoration: BoxDecoration(
-                          color: Color.fromARGB(255, 254, 254, 254),
-                          borderRadius: BorderRadius.circular(25),
-                          border: Border.all(
-                            color: Colors.black,
-                          )
-                          //more than 50% of width makes circle
-                          ),
+                      decoration: notebox,
                       child: Center(
                         child: Column(
                           children: [
@@ -143,18 +126,25 @@ class _notesState extends State<notes> {
                               margin: EdgeInsets.fromLTRB(0.0, 10.0, 0.0, 10.0),
                               height: 90,
                               width: 80,
-                              child: Image.asset('Assets/2.png'),
+                              child: Image.asset('Assets/CSE.png'),
                             ),
                             SizedBox(
                               height: 5,
                             ),
                             Container(
                               child: Center(
-                                child: Text(
-                                  'DBMS',
-                                  style: TextStyle(
-                                    fontFamily: 'Secular',
-                                    fontSize: 18,
+                                child: Container(
+                                  width: 100,
+                                  height: 30,
+                                  decoration: subboxdecor,
+                                  child: Center(
+                                    child: Text(
+                                      'DAA',
+                                      style: TextStyle(
+                                          fontFamily: 'Secular',
+                                          fontSize: 18,
+                                          color: Colors.white),
+                                    ),
                                   ),
                                 ),
                               ),
@@ -174,24 +164,17 @@ class _notesState extends State<notes> {
                       margin: EdgeInsets.fromLTRB(0.0, 50.0, 0.0, 10.0),
                       height: 160,
                       width: 150,
-                      decoration: BoxDecoration(
-                          color: Color.fromARGB(255, 254, 254, 254),
-                          borderRadius: BorderRadius.circular(25),
-                          border: Border.all(
-                            color: Colors.black,
-                          )
-                          //more than 50% of width makes circle
-                          ),
+                      decoration: notebox,
                       child: Center(
                         child: Column(
                           children: [
                             GestureDetector(
                               onTap: () {
-                                // Navigator.push(
-                                //   context,
-                                //   MaterialPageRoute(
-                                //       builder: (context) => const pdf()),
-                                // );
+                                Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                      builder: (context) => const pdf()),
+                                );
                               },
                               child: Container(
                                 margin:
@@ -206,11 +189,18 @@ class _notesState extends State<notes> {
                             ),
                             Container(
                               child: Center(
-                                child: Text(
-                                  'DCCN',
-                                  style: TextStyle(
-                                    fontFamily: 'Secular',
-                                    fontSize: 18,
+                                child: Container(
+                                  width: 100,
+                                  height: 30,
+                                  decoration: subboxdecor,
+                                  child: Center(
+                                    child: Text(
+                                      'DCCN',
+                                      style: TextStyle(
+                                          fontFamily: 'Secular',
+                                          fontSize: 18,
+                                          color: Colors.white),
+                                    ),
                                   ),
                                 ),
                               ),
@@ -225,23 +215,16 @@ class _notesState extends State<notes> {
                   ),
                   GestureDetector(
                     onTap: () {
-                      // Navigator.push(
-                      //   context,
-                      //   MaterialPageRoute(builder: (context) => const pdf()),
-                      // );
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(builder: (context) => const pdf()),
+                      );
                     },
                     child: Container(
                       margin: EdgeInsets.fromLTRB(0.0, 50.0, 0.0, 10.0),
                       height: 160,
                       width: 150,
-                      decoration: BoxDecoration(
-                          color: Color.fromARGB(255, 254, 254, 254),
-                          borderRadius: BorderRadius.circular(25),
-                          border: Border.all(
-                            color: Colors.black,
-                          )
-                          //more than 50% of width makes circle
-                          ),
+                      decoration: notebox,
                       child: Center(
                         child: Column(
                           children: [
@@ -249,18 +232,25 @@ class _notesState extends State<notes> {
                               margin: EdgeInsets.fromLTRB(0.0, 10.0, 0.0, 10.0),
                               height: 90,
                               width: 80,
-                              child: Image.asset('Assets/2.png'),
+                              child: Image.asset('Assets/EEE.png'),
                             ),
                             SizedBox(
                               height: 5,
                             ),
                             Container(
                               child: Center(
-                                child: Text(
-                                  'DBMS',
-                                  style: TextStyle(
-                                    fontFamily: 'Secular',
-                                    fontSize: 18,
+                                child: Container(
+                                  width: 100,
+                                  height: 30,
+                                  decoration: subboxdecor,
+                                  child: Center(
+                                    child: Text(
+                                      'DSD',
+                                      style: TextStyle(
+                                          fontFamily: 'Secular',
+                                          fontSize: 18,
+                                          color: Colors.white),
+                                    ),
                                   ),
                                 ),
                               ),
@@ -280,31 +270,24 @@ class _notesState extends State<notes> {
                       margin: EdgeInsets.fromLTRB(0.0, 50.0, 0.0, 10.0),
                       height: 160,
                       width: 150,
-                      decoration: BoxDecoration(
-                          color: Color.fromARGB(255, 254, 254, 254),
-                          borderRadius: BorderRadius.circular(25),
-                          border: Border.all(
-                            color: Colors.black,
-                          )
-                          //more than 50% of width makes circle
-                          ),
+                      decoration: notebox,
                       child: Center(
                         child: Column(
                           children: [
                             GestureDetector(
                               onTap: () {
-                                // Navigator.push(
-                                //   context,
-                                //   MaterialPageRoute(
-                                //       builder: (context) => const pdf()),
-                                // );
+                                Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                      builder: (context) => const pdf()),
+                                );
                               },
                               child: Container(
                                 margin:
                                     EdgeInsets.fromLTRB(0.0, 10.0, 0.0, 10.0),
                                 height: 90,
                                 width: 80,
-                                child: Image.asset('Assets/1.png'),
+                                child: Image.asset('Assets/Elect.png'),
                               ),
                             ),
                             SizedBox(
@@ -312,11 +295,18 @@ class _notesState extends State<notes> {
                             ),
                             Container(
                               child: Center(
-                                child: Text(
-                                  'DCCN',
-                                  style: TextStyle(
-                                    fontFamily: 'Secular',
-                                    fontSize: 18,
+                                child: Container(
+                                  width: 100,
+                                  height: 30,
+                                  decoration: subboxdecor,
+                                  child: Center(
+                                    child: Text(
+                                      'BEE',
+                                      style: TextStyle(
+                                          fontFamily: 'Secular',
+                                          fontSize: 18,
+                                          color: Colors.white),
+                                    ),
                                   ),
                                 ),
                               ),
@@ -331,10 +321,10 @@ class _notesState extends State<notes> {
                   ),
                   GestureDetector(
                     onTap: () {
-                      // Navigator.push(
-                      //   context,
-                      //   MaterialPageRoute(builder: (context) => const pdf()),
-                      // );
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(builder: (context) => const pdf()),
+                      );
                     },
                     child: Container(
                       margin: EdgeInsets.fromLTRB(0.0, 50.0, 0.0, 10.0),
@@ -361,13 +351,16 @@ class _notesState extends State<notes> {
                               height: 5,
                             ),
                             Container(
+                              decoration: subboxdecor,
+                              width: 100,
+                              height: 30,
                               child: Center(
                                 child: Text(
-                                  'DBMS',
+                                  'DSA',
                                   style: TextStyle(
-                                    fontFamily: 'Secular',
-                                    fontSize: 18,
-                                  ),
+                                      fontFamily: 'Secular',
+                                      fontSize: 18,
+                                      color: Colors.white),
                                 ),
                               ),
                             ),
@@ -381,5 +374,76 @@ class _notesState extends State<notes> {
             ]),
           )
         ]));
+  }
+}
+
+//classed for opening pdfs
+class pdf extends StatefulWidget {
+  const pdf({Key? key}) : super(key: key);
+
+  @override
+  State<pdf> createState() => _pdfState();
+}
+
+class _pdfState extends State<pdf> {
+  @override
+  Widget build(BuildContext context) {
+    return SafeArea(
+      child: Scaffold(
+          appBar: custombar,
+          body: Container(child: SfPdfViewer.asset('Assets/Maths.pdf'))),
+    );
+  }
+}
+
+class subnote extends StatefulWidget {
+  const subnote({Key? key}) : super(key: key);
+
+  @override
+  State<subnote> createState() => _subnoteState();
+}
+
+class _subnoteState extends State<subnote> {
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+        body: SingleChildScrollView(
+            child: Column(children: [
+      SizedBox(
+        height: 18,
+      ),
+      Row(mainAxisAlignment: MainAxisAlignment.center, children: [
+        GestureDetector(
+            child: Container(
+                margin: EdgeInsets.fromLTRB(0.0, 50.0, 0.0, 10.0),
+                height: 160,
+                width: 150,
+                decoration: BoxDecoration(
+                    color: Color.fromARGB(255, 254, 254, 254),
+                    borderRadius: BorderRadius.circular(25),
+                    border: Border.all(
+                      color: Colors.black,
+                    )
+                    //more than 50% of width makes circle
+                    ),
+                child: Center(
+                    child: Column(children: [
+                  GestureDetector(
+                    onTap: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(builder: (context) => const pdf()),
+                      );
+                    },
+                    child: Container(
+                      margin: EdgeInsets.fromLTRB(0.0, 10.0, 0.0, 10.0),
+                      height: 90,
+                      width: 80,
+                      child: Image.asset('Assets/1.png'),
+                    ),
+                  )
+                ]))))
+      ])
+    ])));
   }
 }
