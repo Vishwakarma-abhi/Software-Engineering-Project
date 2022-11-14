@@ -1,64 +1,35 @@
 import 'package:bit_d/custom_widgets/custom_appbar.dart';
-import 'package:bit_d/custom_widgets/custom_drawer.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_database/firebase_database.dart';
 import 'package:firebase_database/ui/firebase_animated_list.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 
 import '../home_screen.dart';
 
-class myprofile extends StatefulWidget {
-  const myprofile({Key? key}) : super(key: key);
+class report extends StatefulWidget {
+  const report({Key? key}) : super(key: key);
 
   @override
-  State<myprofile> createState() => _myprofileState();
+  State<report> createState() => _reportState();
 }
 
-class _myprofileState extends State<myprofile> {
-  late DatabaseReference dbRef;
-  Query dbQuery = FirebaseDatabase.instance.ref().child('Student');
+class _reportState extends State<report> {
+  Query dbQuery = FirebaseDatabase.instance.ref().child('Results');
   DatabaseReference reference =
-      FirebaseDatabase.instance.ref().child('Student');
+      FirebaseDatabase.instance.ref().child('Results');
 
-  get math => null;
-
-  @override
-  void initState() {
-    super.initState();
-    //creating Student Table in Firebase Realtime Database
-    dbRef = FirebaseDatabase.instance.ref().child('Student');
-  }
-
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: custombar,
-      drawer: customdrawer,
-      body: SingleChildScrollView(
-          child: Stack(
-        children: [
-          Column(
+  Widget listItem({required Map result}) {
+    return Stack(
+      children: [
+        SizedBox(),
+        Center(
+          child: Column(
             children: [
               Padding(
-                padding: const EdgeInsets.fromLTRB(0, 10, 0, 0),
-                child: Center(
-                  child: Container(
-                    decoration: BoxDecoration(
-                        shape: BoxShape.circle,
-                        border: Border.all(color: Colors.blue, width: 4.5)),
-                    child: Image.asset(
-                      'Assets/Picture.png',
-                      height: 150,
-                    ),
-                  ),
-                ),
-              ),
-              Padding(
-                padding: const EdgeInsets.fromLTRB(0, 10, 0, 0),
+                padding: const EdgeInsets.fromLTRB(0, 50, 0, 0),
                 child: Container(
                     width: 350,
-                    height: 400,
+                    height: 420,
                     decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(35),
                       color: Colors.blue,
@@ -77,7 +48,7 @@ class _myprofileState extends State<myprofile> {
                               borderRadius: BorderRadius.circular(35)),
                           child: Center(
                               child: Text(
-                            'ABHIJEET ',
+                            "ID - " + result['Student ID'],
                             style: TextStyle(
                                 fontWeight: FontWeight.bold,
                                 fontSize: 20,
@@ -96,7 +67,7 @@ class _myprofileState extends State<myprofile> {
                               borderRadius: BorderRadius.circular(35)),
                           child: Center(
                               child: Text(
-                            'SEMESTER 5',
+                            "Subject Code :  " + result['Subject Code'],
                             style: TextStyle(
                                 fontWeight: FontWeight.bold,
                                 fontSize: 20,
@@ -115,7 +86,7 @@ class _myprofileState extends State<myprofile> {
                               borderRadius: BorderRadius.circular(35)),
                           child: Center(
                               child: Text(
-                            'BTECH/60015/20',
+                            "Semester - " + result['semester'],
                             style: TextStyle(
                                 fontWeight: FontWeight.bold,
                                 fontSize: 20,
@@ -134,7 +105,7 @@ class _myprofileState extends State<myprofile> {
                               borderRadius: BorderRadius.circular(35)),
                           child: Center(
                               child: Text(
-                            'CONTACT',
+                            "Year - " + result['year'],
                             style: TextStyle(
                                 fontWeight: FontWeight.bold,
                                 fontSize: 20,
@@ -158,7 +129,7 @@ class _myprofileState extends State<myprofile> {
                                 borderRadius: BorderRadius.circular(35)),
                             child: Center(
                                 child: Text(
-                              'LOGOUT',
+                              "Score - " + result['score'],
                               style: TextStyle(
                                   fontWeight: FontWeight.bold,
                                   fontSize: 20,
@@ -166,37 +137,142 @@ class _myprofileState extends State<myprofile> {
                             )),
                           ),
                         ),
-
-                        // Padding(
-                        //   padding: const EdgeInsets.fromLTRB(0, 300, 0, 0),
-                        //   child: GestureDetector(
-                        //     onTap: () async {
-                        //       await FirebaseAuth.instance.signOut();
-                        //     },
-                        //     child: Container(
-                        //       width: 150,
-                        //       height: 50,
-                        //       decoration: BoxDecoration(
-                        //           border:
-                        //               Border.all(color: Colors.black, width: 2),
-                        //           color: Colors.green,
-                        //           borderRadius: BorderRadius.circular(35)),
-                        //       child: Center(
-                        //           child: Text(
-                        //         'LOGOUT',
-                        //         style: TextStyle(
-                        //             fontWeight: FontWeight.bold, fontSize: 20),
-                        //       )),
-                        //     ),
-                        //   ),
-                        // ),
+                        SizedBox(
+                          height: 20,
+                        ),
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            GestureDetector(
+                              onTap: () {
+                                //Delete Operation
+                                reference.child(result['key']).remove();
+                              },
+                              child: Icon(
+                                Icons.delete,
+                                color: Colors.white,
+                                size: 35,
+                              ),
+                            )
+                          ],
+                        )
                       ],
                     )),
               ),
             ],
           ),
+        ),
+      ],
+    );
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: custombar,
+      body: Column(
+        children: [
+          SizedBox(
+            height: 15,
+          ),
+          Container(
+            decoration: BoxDecoration(
+                color: Color.fromARGB(255, 94, 140, 240),
+                borderRadius: BorderRadius.circular(15)),
+            width: 250,
+            height: 50,
+            child: Center(
+              child: Padding(
+                padding: const EdgeInsets.fromLTRB(0, 10, 0, 0),
+                child: Text(
+                  'RESULT REPORT',
+                  style: TextStyle(
+                      fontSize: 23,
+                      fontWeight: FontWeight.bold,
+                      color: Colors.white),
+                ),
+              ),
+            ),
+          ),
+          Expanded(
+            child: Container(
+              height: double.infinity,
+              child: FirebaseAnimatedList(
+                  query: dbQuery,
+                  itemBuilder: (BuildContext context, DataSnapshot snapshot,
+                      Animation<double> animation, int index) {
+                    Map resultdata = snapshot.value as Map;
+                    resultdata['key'] = snapshot.key;
+
+                    return listItem(result: resultdata);
+                  }),
+            ),
+          ),
+          ElevatedButton(
+              onPressed: () {
+                Navigator.push(context,
+                    MaterialPageRoute(builder: ((context) => homeScreen())));
+              },
+              child: Text('Back'))
         ],
-      )),
+      ),
     );
   }
 }
+
+
+
+
+
+
+
+// Container(
+//       padding: const EdgeInsets.all(10),
+//       margin: const EdgeInsets.all(10),
+//       height: 150,
+//       decoration: BoxDecoration(
+//           color: Colors.blue, borderRadius: BorderRadius.circular(15)),
+//       child: Column(
+//         children: [
+          
+//           Text(
+//             "Student ID :  " + result['Student ID'],
+//             style: TextStyle(fontSize: 25),
+//           ),
+//           Text(
+//             "Subject Code :  " + result['Subject Code'],
+//             style: TextStyle(fontSize: 25),
+//           ),
+//           SizedBox(
+//             height: 15,
+//           ),
+//           Text(
+//             "Semester :  " + result['semester'],
+//             style: TextStyle(fontSize: 15, fontWeight: FontWeight.bold),
+//           ),
+//           Text(
+//             'year : ' + result['year'],
+//             style: TextStyle(fontSize: 15),
+//           ),
+//           Text(
+//             'score : ' + result['score'],
+//             style: TextStyle(fontSize: 15),
+//           ),
+//           Row(
+//             mainAxisAlignment: MainAxisAlignment.end,
+//             children: [
+//               GestureDetector(
+//                 onTap: () {
+//                   //Delete Operation
+//                   reference.child(result['key']).remove();
+//                 },
+//                 child: Icon(
+//                   Icons.delete,
+//                   color: Theme.of(context).primaryColor,
+//                 ),
+//               )
+//             ],
+//           )
+//         ],
+//       ),
+//     );

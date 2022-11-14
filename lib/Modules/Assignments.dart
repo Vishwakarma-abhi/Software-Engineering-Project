@@ -91,6 +91,7 @@ class _assignmentsState extends State<assignments> {
                       Animation<double> animation, int index) {
                     Map assignments = snapshot.value as Map;
                     assignments['key'] = snapshot.key;
+
                     return listItem(assignment: assignments);
                   }),
             ),

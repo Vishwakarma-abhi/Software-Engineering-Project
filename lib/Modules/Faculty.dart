@@ -60,7 +60,7 @@ class _facultydettailsState extends State<facultydettails> {
                     margin: EdgeInsets.all(5),
                     width: 150,
                     height: 150,
-                    child: Image.asset('Assets/male.png'),
+                    child: Image.asset('Assets/knmSir.png'),
                   ),
                   Container(
                     margin: EdgeInsets.fromLTRB(10.0, 30.0, 10.0, 20.0),

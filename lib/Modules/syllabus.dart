@@ -89,171 +89,6 @@ class _syllabusState extends State<syllabus> {
           Center(child: sem1()),
           Center(child: sem1()),
         ]),
-        // body: Column(
-        //   children: [
-        //     Center(
-        //       child: Container(
-        //           width: 200,
-        //           height: 50,
-        //           decoration: BoxDecoration(
-        //             color: Colors.amber,
-        //             borderRadius: BorderRadius.circular(10),
-        //           ),
-        //           margin: EdgeInsets.all(50),
-        //           child: Center(
-        //               child: Text(
-        //             'CSE',
-        //             style: TextStyle(fontSize: 25, fontWeight: FontWeight.bold),
-        //           ))),
-        //     ),
-        //     Container(
-        //       decoration: BoxDecoration(border: Border.all(color: Colors.orange)),
-        //       height: 60,
-        //       child: ListView(
-        //         scrollDirection: Axis.horizontal,
-        //         children: [
-        //           GestureDetector(
-        //             onTap: () {
-        //               Navigator.push(
-        //                 context,
-        //                 MaterialPageRoute(builder: (context) => const sem1()),
-        //               );
-        //               setState(() {
-        //                 selection = 1;
-        //               });
-        //             },
-        //             child: Container(
-        //               child: Center(
-        //                   child: Text(
-        //                 'SEM 1',
-        //                 style:
-        //                     TextStyle(fontWeight: FontWeight.bold, fontSize: 15),
-        //               )),
-        //               margin: EdgeInsets.fromLTRB(10.0, 10.0, 10.0, 10.0),
-        //               width: 65,
-        //               decoration: BoxDecoration(
-        //                   color: Color.fromARGB(255, 181, 221, 254),
-        //                   borderRadius: BorderRadius.circular(10),
-        //                   border: Border.all(color: Colors.black)),
-        //             ),
-        //           ),
-        //           GestureDetector(
-        //             child: Container(
-        //               child: Center(
-        //                   child: Text(
-        //                 'SEM 2',
-        //                 style:
-        //                     TextStyle(fontWeight: FontWeight.bold, fontSize: 15),
-        //               )),
-        //               margin: EdgeInsets.fromLTRB(10.0, 10.0, 10.0, 10.0),
-        //               width: 65,
-        //               decoration: BoxDecoration(
-        //                   color: Color.fromARGB(255, 181, 221, 254),
-        //                   borderRadius: BorderRadius.circular(10),
-        //                   border: Border.all(color: Colors.black)),
-        //             ),
-        //           ),
-        //           GestureDetector(
-        //             child: Container(
-        //               child: Center(
-        //                   child: Text(
-        //                 'SEM 3',
-        //                 style:
-        //                     TextStyle(fontWeight: FontWeight.bold, fontSize: 15),
-        //               )),
-        //               margin: EdgeInsets.fromLTRB(10.0, 10.0, 10.0, 10.0),
-        //               width: 65,
-        //               decoration: BoxDecoration(
-        //                   color: Color.fromARGB(255, 181, 221, 254),
-        //                   borderRadius: BorderRadius.circular(10),
-        //                   border: Border.all(color: Colors.black)),
-        //             ),
-        //           ),
-        //           GestureDetector(
-        //             child: Container(
-        //               child: Center(
-        //                   child: Text(
-        //                 'SEM 4',
-        //                 style:
-        //                     TextStyle(fontWeight: FontWeight.bold, fontSize: 15),
-        //               )),
-        //               margin: EdgeInsets.fromLTRB(10.0, 10.0, 10.0, 10.0),
-        //               width: 65,
-        //               decoration: BoxDecoration(
-        //                   color: Color.fromARGB(255, 181, 221, 254),
-        //                   borderRadius: BorderRadius.circular(10),
-        //                   border: Border.all(color: Colors.black)),
-        //             ),
-        //           ),
-        //           GestureDetector(
-        //             child: Container(
-        //               child: Center(
-        //                   child: Text(
-        //                 'SEM 5',
-        //                 style:
-        //                     TextStyle(fontWeight: FontWeight.bold, fontSize: 15),
-        //               )),
-        //               margin: EdgeInsets.fromLTRB(10.0, 10.0, 10.0, 10.0),
-        //               width: 65,
-        //               decoration: BoxDecoration(
-        //                   color: Color.fromARGB(255, 181, 221, 254),
-        //                   borderRadius: BorderRadius.circular(10),
-        //                   border: Border.all(color: Colors.black)),
-        //             ),
-        //           ),
-        //           GestureDetector(
-        //             child: Container(
-        //               child: Center(
-        //                   child: Text(
-        //                 'SEM 6',
-        //                 style:
-        //                     TextStyle(fontWeight: FontWeight.bold, fontSize: 15),
-        //               )),
-        //               margin: EdgeInsets.fromLTRB(10.0, 10.0, 10.0, 10.0),
-        //               width: 65,
-        //               decoration: BoxDecoration(
-        //                   color: Color.fromARGB(255, 181, 221, 254),
-        //                   borderRadius: BorderRadius.circular(10),
-        //                   border: Border.all(color: Colors.black)),
-        //             ),
-        //           ),
-        //           GestureDetector(
-        //             child: Container(
-        //               child: Center(
-        //                   child: Text(
-        //                 'SEM 7',
-        //                 style:
-        //                     TextStyle(fontWeight: FontWeight.bold, fontSize: 15),
-        //               )),
-        //               margin: EdgeInsets.fromLTRB(10.0, 10.0, 10.0, 10.0),
-        //               width: 65,
-        //               decoration: BoxDecoration(
-        //                   color: Color.fromARGB(255, 181, 221, 254),
-        //                   borderRadius: BorderRadius.circular(10),
-        //                   border: Border.all(color: Colors.black)),
-        //             ),
-        //           ),
-        //           GestureDetector(
-        //             child: Container(
-        //               child: Center(
-        //                   child: Text(
-        //                 'SEM 8',
-        //                 style:
-        //                     TextStyle(fontWeight: FontWeight.bold, fontSize: 15),
-        //               )),
-        //               margin: EdgeInsets.fromLTRB(10.0, 10.0, 10.0, 10.0),
-        //               width: 65,
-        //               decoration: BoxDecoration(
-        //                   color: Color.fromARGB(255, 181, 221, 254),
-        //                   borderRadius: BorderRadius.circular(10),
-        //                   border: Border.all(color: Colors.black)),
-        //             ),
-        //           ),
-        //         ],
-        //       ),
-        //     )
-        //   ],
-        // ),
       ),
     );
   }
@@ -290,21 +125,31 @@ class _sem1State extends State<sem1> {
               child: Row(
                 children: [
                   Container(
-                    margin: EdgeInsets.all(10),
+                    margin: EdgeInsets.fromLTRB(0, 20, 0, 10),
                     width: 100,
                     height: 150,
-                    child: Image.asset('Assets/1.png'),
+                    child: Image.asset('Assets/mathlogo.png'),
                   ),
                   SizedBox(
                     width: 35,
                   ),
                   Container(
-                    margin: EdgeInsets.fromLTRB(10.0, 50.0, 10.0, 30.0),
+                    margin: EdgeInsets.fromLTRB(10.0, 30.0, 10.0, 42.0),
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(81),
+                      color: Colors.blue,
+                    ),
                     width: 200,
                     height: 150,
-                    child: Text(
-                      'Mathematics',
-                      style: TextStyle(fontSize: 25, fontFamily: 'Secular'),
+                    child: Center(
+                      child: Text(
+                        'Mathematics',
+                        style: TextStyle(
+                            color: Colors.white,
+                            fontSize: 25,
+                            fontFamily: 'Secular',
+                            fontWeight: FontWeight.bold),
+                      ),
                     ),
                   ),
                 ],
@@ -323,21 +168,31 @@ class _sem1State extends State<sem1> {
               child: Row(
                 children: [
                   Container(
-                    margin: EdgeInsets.all(10),
+                    margin: EdgeInsets.fromLTRB(0, 20, 0, 10),
                     width: 100,
                     height: 150,
-                    child: Image.asset('Assets/1.png'),
+                    child: Image.asset('Assets/chemistry.png'),
                   ),
                   SizedBox(
                     width: 35,
                   ),
                   Container(
-                    margin: EdgeInsets.fromLTRB(10.0, 50.0, 10.0, 30.0),
+                    margin: EdgeInsets.fromLTRB(10.0, 30.0, 10.0, 42.0),
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(81),
+                      color: Colors.blue,
+                    ),
                     width: 200,
                     height: 150,
-                    child: Text(
-                      'Mathematics',
-                      style: TextStyle(fontSize: 25, fontFamily: 'Secular'),
+                    child: Center(
+                      child: Text(
+                        'Chemistry',
+                        style: TextStyle(
+                            color: Colors.white,
+                            fontSize: 25,
+                            fontFamily: 'Secular',
+                            fontWeight: FontWeight.bold),
+                      ),
                     ),
                   ),
                 ],
@@ -356,21 +211,31 @@ class _sem1State extends State<sem1> {
               child: Row(
                 children: [
                   Container(
-                    margin: EdgeInsets.all(10),
+                    margin: EdgeInsets.fromLTRB(0, 20, 0, 10),
                     width: 100,
                     height: 150,
-                    child: Image.asset('Assets/1.png'),
+                    child: Image.asset('Assets/Elect.png'),
                   ),
                   SizedBox(
                     width: 35,
                   ),
                   Container(
-                    margin: EdgeInsets.fromLTRB(10.0, 50.0, 10.0, 30.0),
+                    margin: EdgeInsets.fromLTRB(10.0, 30.0, 10.0, 42.0),
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(81),
+                      color: Colors.blue,
+                    ),
                     width: 200,
                     height: 150,
-                    child: Text(
-                      'Mathematics',
-                      style: TextStyle(fontSize: 25, fontFamily: 'Secular'),
+                    child: Center(
+                      child: Text(
+                        'BEC',
+                        style: TextStyle(
+                            color: Colors.white,
+                            fontSize: 25,
+                            fontFamily: 'Secular',
+                            fontWeight: FontWeight.bold),
+                      ),
                     ),
                   ),
                 ],
@@ -389,10 +254,96 @@ class _sem1State extends State<sem1> {
               child: Row(
                 children: [
                   Container(
+                    margin: EdgeInsets.fromLTRB(0, 20, 0, 10),
+                    width: 100,
+                    height: 150,
+                    child: Image.asset('Assets/EEE.png'),
+                  ),
+                  SizedBox(
+                    width: 35,
+                  ),
+                  Container(
+                    margin: EdgeInsets.fromLTRB(10.0, 30.0, 10.0, 42.0),
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(81),
+                      color: Colors.blue,
+                    ),
+                    width: 200,
+                    height: 150,
+                    child: Center(
+                      child: Text(
+                        'DSD',
+                        style: TextStyle(
+                            color: Colors.white,
+                            fontSize: 25,
+                            fontFamily: 'Secular',
+                            fontWeight: FontWeight.bold),
+                      ),
+                    ),
+                  ),
+                ],
+              ),
+            ),
+            Container(
+              margin: EdgeInsets.all(15),
+              width: 400,
+              height: 150,
+              decoration: BoxDecoration(
+                  color: Color.fromARGB(255, 255, 255, 255),
+                  borderRadius: BorderRadius.circular(40),
+                  border: Border.all(
+                    color: Colors.black,
+                  )),
+              child: Row(
+                children: [
+                  Container(
+                    margin: EdgeInsets.fromLTRB(0, 20, 0, 10),
+                    width: 100,
+                    height: 150,
+                    child: Image.asset('Assets/mathlogo.png'),
+                  ),
+                  SizedBox(
+                    width: 35,
+                  ),
+                  Container(
+                    margin: EdgeInsets.fromLTRB(10.0, 30.0, 10.0, 42.0),
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(81),
+                      color: Colors.blue,
+                    ),
+                    width: 200,
+                    height: 150,
+                    child: Center(
+                      child: Text(
+                        'Mathematics',
+                        style: TextStyle(
+                            color: Colors.white,
+                            fontSize: 25,
+                            fontFamily: 'Secular',
+                            fontWeight: FontWeight.bold),
+                      ),
+                    ),
+                  ),
+                ],
+              ),
+            ),
+            Container(
+              margin: EdgeInsets.fromLTRB(0, 20, 0, 10),
+              width: 400,
+              height: 150,
+              decoration: BoxDecoration(
+                  color: Color.fromARGB(255, 255, 255, 255),
+                  borderRadius: BorderRadius.circular(40),
+                  border: Border.all(
+                    color: Colors.black,
+                  )),
+              child: Row(
+                children: [
+                  Container(
                     margin: EdgeInsets.all(10),
                     width: 100,
                     height: 150,
-                    child: Image.asset('Assets/1.png'),
+                    child: Image.asset('Assets/chemistry.png'),
                   ),
                   SizedBox(
                     width: 35,
@@ -402,8 +353,83 @@ class _sem1State extends State<sem1> {
                     width: 200,
                     height: 150,
                     child: Text(
-                      'Mathematics',
-                      style: TextStyle(fontSize: 25, fontFamily: 'Secular'),
+                      'Chemistry',
+                      style: TextStyle(
+                          fontSize: 25,
+                          fontFamily: 'Secular',
+                          fontWeight: FontWeight.bold),
+                    ),
+                  ),
+                ],
+              ),
+            ),
+            Container(
+              margin: EdgeInsets.fromLTRB(0, 20, 0, 10),
+              width: 400,
+              height: 150,
+              decoration: BoxDecoration(
+                  color: Color.fromARGB(255, 255, 255, 255),
+                  borderRadius: BorderRadius.circular(40),
+                  border: Border.all(
+                    color: Colors.black,
+                  )),
+              child: Row(
+                children: [
+                  Container(
+                    margin: EdgeInsets.all(10),
+                    width: 100,
+                    height: 150,
+                    child: Image.asset('Assets/Elect.png'),
+                  ),
+                  SizedBox(
+                    width: 35,
+                  ),
+                  Container(
+                    margin: EdgeInsets.fromLTRB(10.0, 50.0, 10.0, 30.0),
+                    width: 200,
+                    height: 150,
+                    child: Text(
+                      'BEC',
+                      style: TextStyle(
+                          fontSize: 25,
+                          fontFamily: 'Secular',
+                          fontWeight: FontWeight.bold),
+                    ),
+                  ),
+                ],
+              ),
+            ),
+            Container(
+              margin: EdgeInsets.fromLTRB(0, 20, 0, 10),
+              width: 400,
+              height: 150,
+              decoration: BoxDecoration(
+                  color: Color.fromARGB(255, 255, 255, 255),
+                  borderRadius: BorderRadius.circular(40),
+                  border: Border.all(
+                    color: Colors.black,
+                  )),
+              child: Row(
+                children: [
+                  Container(
+                    margin: EdgeInsets.fromLTRB(0, 20, 0, 10),
+                    width: 100,
+                    height: 150,
+                    child: Image.asset('Assets/EEE.png'),
+                  ),
+                  SizedBox(
+                    width: 35,
+                  ),
+                  Container(
+                    margin: EdgeInsets.fromLTRB(10.0, 50.0, 10.0, 30.0),
+                    width: 200,
+                    height: 150,
+                    child: Text(
+                      'Electronics',
+                      style: TextStyle(
+                          fontSize: 25,
+                          fontFamily: 'Secular',
+                          fontWeight: FontWeight.bold),
                     ),
                   ),
                 ],

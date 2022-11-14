@@ -20,15 +20,106 @@ class _cse_bookState extends State<cse_book> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: searchappbar,
-      drawer: customdrawer,
-      body: Column(
-        children: [
-          Container(
-            width: 150,
-            height: 200,
-          ),
-        ],
+      appBar: custombar,
+      body: SingleChildScrollView(
+        child: Column(
+          children: [
+            Center(
+              child: Container(
+                  width: 250,
+                  height: 50,
+                  decoration: BoxDecoration(
+                    color: Color.fromARGB(255, 94, 140, 240),
+                    borderRadius: BorderRadius.circular(10),
+                  ),
+                  margin: EdgeInsets.all(7),
+                  child: Center(
+                      child: Text(
+                    'ACCESS BOOKS',
+                    style: TextStyle(
+                        fontSize: 25,
+                        fontWeight: FontWeight.bold,
+                        color: Colors.white),
+                  ))),
+            ),
+            Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: Padding(
+                padding: const EdgeInsets.fromLTRB(0, 25, 0, 0),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Column(
+                      children: [
+                        GestureDetector(
+                          child: Container(
+                            width: 150,
+                            height: 200,
+                            child: Image.asset('Assets/crackin.jpg'),
+                          ),
+                        ),
+                        SizedBox(
+                          height: 20,
+                        ),
+                        GestureDetector(
+                          child: Container(
+                            width: 150,
+                            height: 200,
+                            child: Image.asset(
+                              'Assets/algor.jpg',
+                              fit: BoxFit.cover,
+                            ),
+                          ),
+                        ),
+                        SizedBox(
+                          height: 20,
+                        ),
+                        GestureDetector(
+                          child: Container(
+                            width: 150,
+                            height: 200,
+                            child: Image.asset(
+                              'Assets/toc.jpg',
+                              fit: BoxFit.cover,
+                            ),
+                          ),
+                        ),
+                      ],
+                    ),
+                    SizedBox(
+                      width: 25,
+                    ),
+                    Column(
+                      children: [
+                        Container(
+                          width: 150,
+                          height: 200,
+                          child: Image.asset('Assets/sysd.jpg'),
+                        ),
+                        SizedBox(
+                          height: 20,
+                        ),
+                        Container(
+                          width: 150,
+                          height: 200,
+                          child: Image.asset('Assets/pyth.jpg'),
+                        ),
+                        SizedBox(
+                          height: 20,
+                        ),
+                        Container(
+                          width: 150,
+                          height: 200,
+                          child: Image.asset('Assets/se.jpg'),
+                        ),
+                      ],
+                    ),
+                  ],
+                ),
+              ),
+            ),
+          ],
+        ),
       ),
     );
     // body: Column(children: [
