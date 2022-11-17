@@ -1,4 +1,7 @@
+import 'package:bit_d/Modules/facultyprofile.dart';
+import 'package:bit_d/custom_widgets/custom_appbar.dart';
 import 'package:flutter/material.dart';
+import 'package:syncfusion_flutter_pdfviewer/pdfviewer.dart';
 
 class syllabus extends StatefulWidget {
   const syllabus({Key? key}) : super(key: key);
@@ -94,6 +97,25 @@ class _syllabusState extends State<syllabus> {
   }
 }
 
+//classed for opening pdfs
+class pdf extends StatefulWidget {
+  const pdf({Key? key}) : super(key: key);
+
+  @override
+  State<pdf> createState() => _pdfState();
+}
+
+class _pdfState extends State<pdf> {
+  @override
+  Widget build(BuildContext context) {
+    return SafeArea(
+      child: Scaffold(
+          appBar: custombar,
+          body: Container(child: SfPdfViewer.asset('Assets/syllabus.pdf'))),
+    );
+  }
+}
+
 //Sem 1
 class sem1 extends StatefulWidget {
   const sem1({Key? key}) : super(key: key);
@@ -124,31 +146,43 @@ class _sem1State extends State<sem1> {
                   )),
               child: Row(
                 children: [
-                  Container(
-                    margin: EdgeInsets.fromLTRB(0, 20, 0, 10),
-                    width: 100,
-                    height: 150,
-                    child: Image.asset('Assets/mathlogo.png'),
+                  GestureDetector(
+                    onTap: () {
+                      Navigator.push(context,
+                          MaterialPageRoute(builder: (context) => pdf()));
+                    },
+                    child: Container(
+                      margin: EdgeInsets.fromLTRB(0, 20, 0, 10),
+                      width: 100,
+                      height: 150,
+                      child: Image.asset('Assets/mathlogo.png'),
+                    ),
                   ),
                   SizedBox(
                     width: 35,
                   ),
-                  Container(
-                    margin: EdgeInsets.fromLTRB(10.0, 30.0, 10.0, 42.0),
-                    decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(81),
-                      color: Colors.blue,
-                    ),
-                    width: 200,
-                    height: 150,
-                    child: Center(
-                      child: Text(
-                        'Mathematics',
-                        style: TextStyle(
-                            color: Colors.white,
-                            fontSize: 25,
-                            fontFamily: 'Secular',
-                            fontWeight: FontWeight.bold),
+                  GestureDetector(
+                    onTap: () {
+                      Navigator.push(context,
+                          MaterialPageRoute(builder: (context) => pdf()));
+                    },
+                    child: Container(
+                      margin: EdgeInsets.fromLTRB(10.0, 30.0, 10.0, 42.0),
+                      decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(81),
+                        color: Colors.blue,
+                      ),
+                      width: 200,
+                      height: 150,
+                      child: Center(
+                        child: Text(
+                          'Mathematics',
+                          style: TextStyle(
+                              color: Colors.white,
+                              fontSize: 25,
+                              fontFamily: 'Secular',
+                              fontWeight: FontWeight.bold),
+                        ),
                       ),
                     ),
                   ),

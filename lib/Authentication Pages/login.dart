@@ -1,8 +1,7 @@
 import 'package:bit_d/functions/authfunctions.dart';
+import 'package:firebase_database/firebase_database.dart';
 
 import 'package:flutter/material.dart';
-
-import 'package:bit_d/home_screen.dart';
 
 class loginpage extends StatefulWidget {
   const loginpage({Key? key}) : super(key: key);
@@ -17,6 +16,7 @@ class _loginpageState extends State<loginpage> {
   String email = '';
   String password = '';
   String fullname = '';
+
   bool islogin = false;
   bool _isHidden = true;
 
@@ -25,6 +25,11 @@ class _loginpageState extends State<loginpage> {
       _isHidden = !_isHidden;
     });
   }
+
+  late DatabaseReference dbRef;
+
+  Query dbQuery = FirebaseDatabase.instance.ref().child('users');
+  DatabaseReference reference = FirebaseDatabase.instance.ref().child('users');
 
   @override
   Widget build(BuildContext context) {
@@ -150,12 +155,18 @@ class _loginpageState extends State<loginpage> {
                         SizedBox(
                           height: 10,
                         ),
+
+                        SizedBox(
+                          height: 50,
+                        ),
+
                         ElevatedButton(
                             onPressed: () async {
                               if (_formKey.currentState!.validate()) {
                                 //save the form
                                 _formKey.currentState!.save();
-                                //after validation of the form check whether the user is already hae an account or not
+
+                                //after validation of the form check whether the user is already have an account or not
                                 //if yes then display home screen else display login screen
                                 islogin
                                     ? AuthServices.signinUser(
@@ -178,64 +189,7 @@ class _loginpageState extends State<loginpage> {
                             },
                             child: Text(islogin
                                 ? 'Don t have an account '
-                                : 'Already have an account ? Login'))
-
-                        // Padding(
-                        //   padding: const EdgeInsets.all(68.0),
-                        //   child: GestureDetector(
-                        //     onTap: () {
-                        //       if (_formKey.currentState!.validate()) {
-                        //         _formKey.currentState!.save();
-                        //         signIn(email, password);
-                        //         // Navigator.push(
-                        //         //     context,
-                        //         //     MaterialPageRoute(
-                        //         //         builder: (context) =>
-                        //         //             signIn(email, password)));
-                        //       }
-                        //     },
-                        //     child: Container(
-                        //       width: 250,
-                        //       height: 50,
-                        //       decoration: BoxDecoration(
-                        //         borderRadius: BorderRadius.circular(28),
-                        //         color: Color(0xFF32A5E1),
-                        //       ),
-                        //       child: Center(
-                        //           child: Text(
-                        //         'LOGIN',
-                        //         style: TextStyle(
-                        //             fontSize: 22, fontWeight: FontWeight.bold),
-                        //       )),
-                        //     ),
-                        //   ),
-                        // ),
-                        // Padding(
-                        //   padding: const EdgeInsets.fromLTRB(0, 0, 0, 0),
-                        //   child: GestureDetector(
-                        //     onTap: () {
-                        //       Navigator.push(
-                        //           context,
-                        //           MaterialPageRoute(
-                        //               builder: (context) => signup_page()));
-                        //     },
-                        //     child: Container(
-                        //       margin: EdgeInsets.fromLTRB(0, 0, 0, 10),
-                        //       width: 150,
-                        //       height: 30,
-                        //       decoration: BoxDecoration(
-                        //         borderRadius: BorderRadius.circular(28),
-                        //         color: Color(0xFFFFC648),
-                        //       ),
-                        //       child: Center(
-                        //           child: Text(
-                        //         'NEW USER',
-                        //         style: TextStyle(
-                        //             fontSize: 22, fontWeight: FontWeight.bold),
-                        //       )),
-                        //     ),
-                        //   ),
-                        // )
+                                : 'Already have an account ? Login')),
                       ],
                     ),
                   ),

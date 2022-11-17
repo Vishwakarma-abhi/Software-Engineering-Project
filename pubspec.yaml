@@ -41,6 +41,7 @@ dependencies:
   firebase_database: ^10.0.3
   flutter_animate: ^2.0.0
   url_launcher: ^6.1.6
+  carousel_slider: ^4.0.0
 
   syncfusion_flutter_pdfviewer: ^19.1.69-beta
 
@@ -68,6 +69,8 @@ flutter:
   # To add assets to your application, add an assets section, like this:
   assets:
     - Assets/logo.png
+    - Assets/pdf.png
+    - Assets/shop.png
     - Assets/profile.png
     - Assets/1.png
     - Assets/crackin.jpg
@@ -76,7 +79,7 @@ flutter:
     - Assets/algor.jpg
     - Assets/se.jpg
     - Assets/pyth.jpg
-
+    - Assets/syllabus.pdf
     - Assets/2.png
     - Assets/3.png
     - Assets/4.png
@@ -113,6 +116,21 @@ flutter:
     - Assets/acad.jpg
     - Assets/crackin.jpg
     - Assets/qknm.pdf
+    - Assets/rak.png
+    - Assets/paulsir.png
+    - Assets/INTERN.png
+    - Assets/leetcode.png
+    - Assets/gfg.png
+    - Assets/Youtube.png
+    - Assets/tutor.png
+    - Assets/github.png
+    - Assets/arshgoyal.png
+    - Assets/striver.png
+    - Assets/gates.png
+    - Assets/apna.png
+    - Assets/babbar.png
+    - Assets/harry.png
+    - Assets/problemday.png
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware

@@ -52,6 +52,12 @@ class _cse_bookState extends State<cse_book> {
                     Column(
                       children: [
                         GestureDetector(
+                          onTap: () {
+                            Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                    builder: (context) => Bookoptions()));
+                          },
                           child: Container(
                             width: 150,
                             height: 200,
@@ -122,88 +128,77 @@ class _cse_bookState extends State<cse_book> {
         ),
       ),
     );
-    // body: Column(children: [
-    //   Padding(
-    //     padding: const EdgeInsets.fromLTRB(0, 30, 0, 0),
-    //     child: SizedBox(
-    //       height: 60,
-    //       child: Text(
-    //         'ACCESS BOOKS',
-    //         style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
-    //       ),
-    //     ),
-    //   ),
-    //   Padding(
-    //     padding: const EdgeInsets.fromLTRB(50, 20, 50, 0),
-    //     child: TextField(
-    //       controller: subjectcode,
-    //       keyboardType: TextInputType.text,
-    //       decoration: InputDecoration(
-    //           border: OutlineInputBorder(),
-    //           labelText: 'Subject Code',
-    //           hintText: 'Enter Your Subject Code'),
-    //     ),
-    //   ),
-    //   Padding(
-    //     padding: const EdgeInsets.fromLTRB(50, 20, 50, 20),
-    //     child: TextField(
-    //       controller: semester,
-    //       keyboardType: TextInputType.text,
-    //       decoration: InputDecoration(
-    //           border: OutlineInputBorder(),
-    //           labelText: 'semester',
-    //           hintText: 'Enter DeadLine '),
-    //     ),
-    //   ),
-    //   Center(
-    //       child: Text(
-    //     'OR',
-    //     style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
-    //   )),
-    //   Padding(
-    //     padding: const EdgeInsets.fromLTRB(50, 20, 50, 0),
-    //     child: TextField(
-    //       textAlign: TextAlign.center,
-    //       controller: isbn,
-    //       keyboardType: TextInputType.text,
-    //       decoration: InputDecoration(
-    //         border: OutlineInputBorder(),
-    //         hintText: 'Enter year',
-    //         labelText: 'Year',
-    //       ),
-    //     ),
-    //   ),
-    //   GestureDetector(
-    //     onTap: () {
-    //       // Map<String, String> assignmentss = {
-    //       //   'Subject Code': SubjectCode.text,
-    //       //   'Deadline': Deadline.text,
-    //       //   'Assignment Detail': AssignmentDetail.text,
-    //       // };
+  }
+}
 
-    //       // dbRef.push().set(assignmentss);
-    //       // Navigator.push(
-    //       //     context,
-    //       //     MaterialPageRoute(
-    //       //         builder: ((context) => assignments())));
-    //     },
-    //     child: Padding(
-    //       padding: const EdgeInsets.fromLTRB(0, 30, 0, 0),
-    //       child: Container(
-    //         child: Center(
-    //             child: Text(
-    //           'Add',
-    //           style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
-    //         )),
-    //         height: 50,
-    //         width: 100,
-    //         decoration: BoxDecoration(
-    //             color: Color(0xFFFFBD59),
-    //             borderRadius: BorderRadius.circular(30),
-    //             border: Border.all(color: Colors.black)),
-    //       ),
-    //     ),
-    //   ),
-    // ]));
+class Bookoptions extends StatefulWidget {
+  const Bookoptions({Key? key}) : super(key: key);
+
+  @override
+  State<Bookoptions> createState() => _BookoptionsState();
+}
+
+class _BookoptionsState extends State<Bookoptions> {
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: custombar,
+      body: Center(
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Container(
+                width: 150,
+                height: 250,
+                decoration: BoxDecoration(
+                    border: Border.all(width: 3, color: Colors.black),
+                    borderRadius: BorderRadius.circular(35)),
+                child: Center(
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Image.asset(
+                        'Assets/pdf.png',
+                        height: 100,
+                      ),
+                      Center(
+                        child: Text(
+                          'PDF',
+                          style: TextStyle(
+                            fontSize: 50,
+                          ),
+                        ),
+                      ),
+                    ],
+                  ),
+                )),
+            SizedBox(
+              width: 15,
+            ),
+            Container(
+                width: 150,
+                height: 250,
+                decoration: BoxDecoration(
+                    border: Border.all(width: 3, color: Colors.black),
+                    borderRadius: BorderRadius.circular(35)),
+                child: Center(
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Image.asset(
+                        'Assets/shop.png',
+                        height: 100,
+                      ),
+                      Text('Order',
+                          style: TextStyle(
+                            fontSize: 50,
+                          )),
+                    ],
+                  ),
+                ))
+          ],
+        ),
+      ),
+    );
   }
 }

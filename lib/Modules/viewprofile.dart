@@ -16,49 +16,29 @@ class myprofile extends StatefulWidget {
 }
 
 class _myprofileState extends State<myprofile> {
-  late DatabaseReference dbRef;
   Query dbQuery = FirebaseDatabase.instance.ref().child('Student');
   DatabaseReference reference =
       FirebaseDatabase.instance.ref().child('Student');
 
-  get math => null;
-
-  @override
-  void initState() {
-    super.initState();
-    //creating Student Table in Firebase Realtime Database
-    dbRef = FirebaseDatabase.instance.ref().child('Student');
-  }
-
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: custombar,
-      drawer: customdrawer,
-      body: SingleChildScrollView(
-          child: Stack(
-        children: [
-          Column(
+  Widget listItem({required Map student}) {
+    return Stack(
+      children: [
+        SizedBox(),
+        Center(
+          child: Column(
             children: [
-              Padding(
-                padding: const EdgeInsets.fromLTRB(0, 10, 0, 0),
-                child: Center(
-                  child: Container(
-                    decoration: BoxDecoration(
-                        shape: BoxShape.circle,
-                        border: Border.all(color: Colors.blue, width: 4.5)),
-                    child: Image.asset(
-                      'Assets/Picture.png',
-                      height: 150,
-                    ),
-                  ),
-                ),
+              SizedBox(
+                height: 15,
+              ),
+              Image.asset(
+                'Assets/Picture.png',
+                height: 150,
               ),
               Padding(
-                padding: const EdgeInsets.fromLTRB(0, 10, 0, 0),
+                padding: const EdgeInsets.fromLTRB(0, 20, 0, 0),
                 child: Container(
                     width: 350,
-                    height: 400,
+                    height: 420,
                     decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(35),
                       color: Colors.blue,
@@ -77,7 +57,7 @@ class _myprofileState extends State<myprofile> {
                               borderRadius: BorderRadius.circular(35)),
                           child: Center(
                               child: Text(
-                            'ABHIJEET ',
+                            "" + student['fullname'],
                             style: TextStyle(
                                 fontWeight: FontWeight.bold,
                                 fontSize: 20,
@@ -96,7 +76,7 @@ class _myprofileState extends State<myprofile> {
                               borderRadius: BorderRadius.circular(35)),
                           child: Center(
                               child: Text(
-                            'SEMESTER 5',
+                            "" + student['Student ID'],
                             style: TextStyle(
                                 fontWeight: FontWeight.bold,
                                 fontSize: 20,
@@ -115,7 +95,7 @@ class _myprofileState extends State<myprofile> {
                               borderRadius: BorderRadius.circular(35)),
                           child: Center(
                               child: Text(
-                            'BTECH/60015/20',
+                            "Semester - " + student['Semester'],
                             style: TextStyle(
                                 fontWeight: FontWeight.bold,
                                 fontSize: 20,
@@ -134,7 +114,7 @@ class _myprofileState extends State<myprofile> {
                               borderRadius: BorderRadius.circular(35)),
                           child: Center(
                               child: Text(
-                            'CONTACT',
+                            "" + student['State'],
                             style: TextStyle(
                                 fontWeight: FontWeight.bold,
                                 fontSize: 20,
@@ -142,61 +122,81 @@ class _myprofileState extends State<myprofile> {
                           )),
                         ),
                         SizedBox(
-                          height: 15,
+                          height: 20,
                         ),
-                        GestureDetector(
-                          onTap: () async {
-                            await FirebaseAuth.instance.signOut();
-                          },
-                          child: Container(
-                            width: 250,
-                            height: 50,
-                            decoration: BoxDecoration(
-                                border:
-                                    Border.all(color: Colors.black, width: 2),
-                                color: Colors.green,
-                                borderRadius: BorderRadius.circular(35)),
-                            child: Center(
-                                child: Text(
-                              'LOGOUT',
-                              style: TextStyle(
-                                  fontWeight: FontWeight.bold,
-                                  fontSize: 20,
-                                  color: Colors.white),
-                            )),
-                          ),
+                        Container(
+                          width: 250,
+                          height: 50,
+                          decoration: BoxDecoration(
+                              border: Border.all(color: Colors.black, width: 2),
+                              color: Colors.green,
+                              borderRadius: BorderRadius.circular(35)),
+                          child: Center(
+                              child: Text(
+                            "" + student['City'],
+                            style: TextStyle(
+                                fontWeight: FontWeight.bold,
+                                fontSize: 20,
+                                color: Colors.white),
+                          )),
                         ),
-
-                        // Padding(
-                        //   padding: const EdgeInsets.fromLTRB(0, 300, 0, 0),
-                        //   child: GestureDetector(
-                        //     onTap: () async {
-                        //       await FirebaseAuth.instance.signOut();
-                        //     },
-                        //     child: Container(
-                        //       width: 150,
-                        //       height: 50,
-                        //       decoration: BoxDecoration(
-                        //           border:
-                        //               Border.all(color: Colors.black, width: 2),
-                        //           color: Colors.green,
-                        //           borderRadius: BorderRadius.circular(35)),
-                        //       child: Center(
-                        //           child: Text(
-                        //         'LOGOUT',
-                        //         style: TextStyle(
-                        //             fontWeight: FontWeight.bold, fontSize: 20),
-                        //       )),
-                        //     ),
-                        //   ),
-                        // ),
+                        SizedBox(
+                          height: 20,
+                        ),
                       ],
                     )),
               ),
             ],
           ),
+        ),
+      ],
+    );
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: custombar,
+      body: Column(
+        children: [
+          SizedBox(
+            height: 15,
+          ),
+          Container(
+            decoration: BoxDecoration(
+                color: Color.fromARGB(255, 94, 140, 240),
+                borderRadius: BorderRadius.circular(15)),
+            width: 250,
+            height: 50,
+            child: Center(
+              child: Padding(
+                padding: const EdgeInsets.fromLTRB(0, 10, 0, 0),
+                child: Text(
+                  'MY PROFILE',
+                  style: TextStyle(
+                      fontSize: 23,
+                      fontWeight: FontWeight.bold,
+                      color: Colors.white),
+                ),
+              ),
+            ),
+          ),
+          Expanded(
+            child: Container(
+              height: double.infinity,
+              child: FirebaseAnimatedList(
+                  query: dbQuery,
+                  itemBuilder: (BuildContext context, DataSnapshot snapshot,
+                      Animation<double> animation, int index) {
+                    Map profiledata = snapshot.value as Map;
+                    profiledata['key'] = snapshot.key;
+
+                    return listItem(student: profiledata);
+                  }),
+            ),
+          ),
         ],
-      )),
+      ),
     );
   }
 }

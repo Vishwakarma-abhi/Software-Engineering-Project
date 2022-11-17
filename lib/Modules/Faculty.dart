@@ -88,6 +88,97 @@ class _facultydettailsState extends State<facultydettails> {
                   ),
                 ],
               ),
+            ),
+
+            Container(
+              margin: EdgeInsets.fromLTRB(10, 10, 10, 10),
+              width: 400,
+              height: 150,
+              decoration: BoxDecoration(
+                color: Colors.white,
+                border: Border.all(color: Colors.black),
+                borderRadius: BorderRadius.circular(40),
+              ),
+              child: Row(
+                children: [
+                  Container(
+                    margin: EdgeInsets.all(5),
+                    width: 150,
+                    height: 150,
+                    child: Image.asset('Assets/paulsir.png'),
+                  ),
+                  Container(
+                    margin: EdgeInsets.fromLTRB(10.0, 30.0, 10.0, 20.0),
+                    width: 200,
+                    height: 150,
+                    child: Column(
+                      children: [
+                        Text(
+                          '	Dr. Sounak Paul',
+                          style: TextStyle(fontSize: 20),
+                        ),
+                        SizedBox(
+                          height: 15,
+                        ),
+                        ElevatedButton(
+                            onPressed: () {
+                              Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                      builder: (context) => facprofile()));
+                            },
+                            child: Text('DETAILS'))
+                      ],
+                    ),
+                  ),
+                ],
+              ),
+            ),
+
+            //Rayees Ahmad sir
+            Container(
+              margin: EdgeInsets.fromLTRB(10, 10, 10, 10),
+              width: 400,
+              height: 150,
+              decoration: BoxDecoration(
+                color: Colors.white,
+                border: Border.all(color: Colors.black),
+                borderRadius: BorderRadius.circular(40),
+              ),
+              child: Row(
+                children: [
+                  Container(
+                    margin: EdgeInsets.all(5),
+                    width: 150,
+                    height: 150,
+                    child: Image.asset('Assets/rak.png'),
+                  ),
+                  Container(
+                    margin: EdgeInsets.fromLTRB(10.0, 30.0, 10.0, 20.0),
+                    width: 200,
+                    height: 150,
+                    child: Column(
+                      children: [
+                        Text(
+                          '	Mr. Rayees Ahamed',
+                          style: TextStyle(fontSize: 20),
+                        ),
+                        SizedBox(
+                          height: 15,
+                        ),
+                        ElevatedButton(
+                            onPressed: () {
+                              Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                      builder: (context) => facprofile()));
+                            },
+                            child: Text('DETAILS'))
+                      ],
+                    ),
+                  ),
+                ],
+              ),
             )
           ],
         ),

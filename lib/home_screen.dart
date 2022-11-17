@@ -1,4 +1,5 @@
 import 'package:bit_d/Authentication%20Pages/login.dart';
+import 'package:bit_d/Canteen/canteenhome.dart';
 import 'package:bit_d/Modules/Add_assignments.dart';
 import 'package:bit_d/Modules/Assignments.dart';
 import 'package:bit_d/Modules/Faculty.dart';
@@ -14,6 +15,7 @@ import 'package:bit_d/custom_widgets/custom_appbar.dart';
 import 'package:bit_d/custom_widgets/custom_drawer.dart';
 import 'package:bit_d/custom_widgets/home_boxdecor.dart';
 import 'package:bit_d/functions/erp.dart';
+import 'package:bit_d/more.dart';
 import 'package:bit_d/pyqs.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
@@ -39,7 +41,70 @@ class _homeScreenState extends State<homeScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: custombar,
-      drawer: customdrawer,
+      drawer: Drawer(
+        child: Padding(
+          padding: const EdgeInsets.fromLTRB(0, 0, 0, 0),
+          child: ListView(
+            padding: EdgeInsets.zero,
+            children: [
+              DrawerHeader(
+                  decoration: BoxDecoration(
+                      color: Color.fromARGB(
+                    255,
+                    94,
+                    140,
+                    240,
+                  )),
+                  child: Column(
+                    children: [
+                      Image.asset(
+                        'Assets/home.png',
+                        height: 100,
+                      ),
+                      Center(
+                        child: Text(
+                          ' WELCOME ',
+                          // + username!.toUpperCase(),
+                          style: TextStyle(fontSize: 20, color: Colors.white),
+                        ),
+                      )
+                    ],
+                  )),
+              ListTile(
+                leading: Icon(
+                  Icons.home,
+                ),
+                title: const Text('HOME'),
+                onTap: () {},
+              ),
+              ListTile(
+                leading: GestureDetector(onTap: () {}, child: Icon(Icons.web)),
+                title: const Text('ERP'),
+                onTap: () {},
+              ),
+              ListTile(
+                leading: GestureDetector(onTap: () {}, child: Icon(Icons.shop)),
+                title: const Text('CANTEEN'),
+                onTap: () {
+                  Navigator.push(context,
+                      MaterialPageRoute(builder: (context) => Canteen()));
+                },
+              ),
+              ListTile(
+                leading: Icon(Icons.info),
+                title: GestureDetector(child: const Text('ABOUT US')),
+              ),
+              ListTile(
+                leading: Icon(Icons.logout),
+                title: const Text('LOGOUT'),
+                onTap: () async {
+                  await FirebaseAuth.instance.signOut();
+                },
+              ),
+            ],
+          ),
+        ),
+      ),
       body: Stack(
         children: [
           Column(
@@ -452,7 +517,7 @@ class _homeScreenState extends State<homeScreen> {
                           Navigator.push(
                               context,
                               MaterialPageRoute(
-                                  builder: ((context) => Holiday())));
+                                  builder: ((context) => MoreFeatures())));
                         },
                         child: Container(
                           decoration: boxdecor,
@@ -461,7 +526,7 @@ class _homeScreenState extends State<homeScreen> {
                           child: Column(
                             children: [
                               Image.asset(
-                                'Assets/3.png',
+                                'Assets/CSE.png',
                                 height: 80,
                               ),
                               Container(
@@ -470,7 +535,7 @@ class _homeScreenState extends State<homeScreen> {
                                 color: Color.fromARGB(255, 94, 140, 240),
                                 child: Center(
                                   child: Text(
-                                    'Holidays',
+                                    'More',
                                     style: TextStyle(
                                         fontWeight: FontWeight.bold,
                                         color: Colors.white),

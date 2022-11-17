@@ -24,7 +24,9 @@ class _profileState extends State<profile> {
   late DatabaseReference dbRef;
 
   get math => null;
-
+  Query dbQuery = FirebaseDatabase.instance.ref().child('Student');
+  DatabaseReference reference =
+      FirebaseDatabase.instance.ref().child('Student');
   @override
   void initState() {
     super.initState();
