@@ -131,6 +131,17 @@ flutter:
     - Assets/babbar.png
     - Assets/harry.png
     - Assets/problemday.png
+    - Assets/c1.png
+    - Assets/p1.jpg
+    - Assets/momo.jpg
+    - Assets/c6.png
+    - Assets/c4.png
+    - Assets/c3.png
+    - Assets/c2.png
+    - Assets/burger.jpg
+    - Assets/chief.png
+    - Assets/online.png
+    - Assets/cod.png
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware
